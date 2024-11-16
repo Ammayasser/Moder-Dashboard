@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, sans-serif;
+  letter-spacing: -0.2px;
 }
 
 /* Add animation keyframes */
@@ -36,23 +37,33 @@
 }
 
 body {
-  /* Primary gradient background with more vibrant colors */
+  /* Enhanced background and animation */
   background: linear-gradient(
-    -45deg,
-    #000428,
-    #004e92,
-    #2c5364,
-    #1a2980,
-    #26d0ce
+    125deg,
+    #13151a,
+    #1f2937,
+    #2d3748,
+    #2c3e50,
+    #34495e,
+    #2c3e50,
+    #1f2937
   );
-  background-size: 400% 400%;
+  background-size: 300% 300%;
   animation: gradientBG 20s ease infinite;
   min-height: 100vh;
+  color: #E6F3FF;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   position: relative;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 /* Add multiple decorative layers */
@@ -65,16 +76,16 @@ body::before {
   height: 100%;
   background: radial-gradient(
       circle at 15% 50%,
-      rgba(25, 0, 255, 0.1) 0%,
+      rgba(66, 153, 225, 0.08) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 85% 30%,
-      rgba(0, 255, 242, 0.1) 0%,
+      rgba(49, 130, 206, 0.08) 0%,
       transparent 50%
     ),
-    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
   animation: backgroundShift 15s ease-in-out infinite;
   pointer-events: none;
@@ -88,15 +99,14 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(
-      circle at 50% 50%,
-      white 0%,
-      transparent 0.5%
-    ),
-    radial-gradient(circle at 80% 80%, white 0%, transparent 0.5%),
-    radial-gradient(circle at 20% 20%, white 0%, transparent 0.5%);
-  background-size: 100px 100px, 120px 120px, 150px 150px;
-  animation: sparkle 10s linear infinite;
+  background: 
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+    radial-gradient(2px 2px at 40% 70%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+    radial-gradient(2px 2px at 60% 20%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at 80% 90%, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+  background-repeat: repeat;
+  background-size: 250px 250px;
+  animation: sparkle 15s linear infinite;
   opacity: 0.5;
   pointer-events: none;
 }
@@ -148,7 +158,7 @@ body::after {
 
 .dashboard-container {
   animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(17, 17, 17, 0.75);
+  background: rgba(17, 25, 40, 0.75);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
@@ -158,9 +168,12 @@ body::after {
   gap: 20px;
   width: 100%;
   max-width: 1500px;
+
   margin: 0 auto;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3),
-    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .dashboard-container > * {
@@ -187,6 +200,7 @@ body::after {
   flex-direction: column;
   justify-content: flex-end;
   animation: pulse 4s ease-in-out infinite;
+  transform-style: preserve-3d;
 }
 
 .machine-stats-card::before {
@@ -220,6 +234,7 @@ body::after {
   position: relative;
   font-size: 16px;
   width: fit-content;
+  transition: background 0.3s ease;
 }
 
 .stats-header p:last-child {
@@ -231,8 +246,18 @@ body::after {
 }
 
 .innovation-card {
-  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(23, 32, 42, 0.95) 0%,
+    rgba(33, 42, 52, 0.98) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(255, 255, 255, 0.05);
   margin-top: 45px;
   padding: 20px;
   padding-bottom: 60px;
@@ -243,30 +268,67 @@ body::after {
   flex-direction: column;
   min-height: 280px;
   gap: 15px;
+  transform-style: preserve-3d;
+  border-radius: 20px;
 }
 
 .innovation-card::before {
-  content: "";
+  content: '';
   position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
+  inset: -2px;
   background: linear-gradient(
-    45deg,
-    transparent 45%,
-    rgba(0, 153, 255, 0.1) 100%
+    300deg,
+    #00ff87,
+    #60efff,
+    #0061ff,
+    #ff3d9a,
+    #00ff87
   );
-  transform: rotate(-15deg);
+  background-size: 300% 300%;
+  animation: borderGlow 12s linear infinite;
+  z-index: -1;
+  border-radius: inherit;
+  filter: blur(8px);
+}
+
+.innovation-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 100% 100%, rgba(0, 255, 135, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 0% 100%, rgba(0, 97, 255, 0.05) 0%, transparent 40%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
 
 .innovation-card h1 {
   font-size: 38px;
   margin-bottom: 15px;
-  background: linear-gradient(45deg, #000, #0099ff);
+  background: linear-gradient(
+    45deg, 
+    #ffffff 0%,
+    #80BFFF 50%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  animation: textGradient 8s linear infinite;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  position: relative;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(255, 255, 255, 0.1);
 }
 
 .stats-label {
@@ -292,9 +354,11 @@ body::after {
 .progress-bar {
   height: 8px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
+  animation: progressLoad 1.5s ease-out forwards;
+  transform-style: preserve-3d;
 }
 
 .progress-bar::after {
@@ -351,13 +415,14 @@ body::after {
   margin-top: auto;
   order: 3;
   perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .action-buttons button {
   flex: 1;
   padding: 16px 24px;
   border: none;
-  border-radius: 20px;
+  border-radius: 16px;
   color: white;
   cursor: pointer;
   display: flex;
@@ -371,6 +436,7 @@ body::after {
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-style: preserve-3d;
   text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* First button - Cyberpunk style */
@@ -593,6 +659,7 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  transform-style: preserve-3d;
 }
 
 nav {
@@ -608,7 +675,7 @@ nav {
     rgba(26, 26, 26, 0.95),
     rgba(38, 38, 38, 0.95)
   );
-  border-radius: 30px;
+  border-radius: 20px;
   padding: 16px 25px;
   display: flex;
   justify-content: space-between;
@@ -617,6 +684,7 @@ nav {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .nav-container:hover {
@@ -658,6 +726,7 @@ nav {
   backdrop-filter: blur(5px);
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
 }
 
 .nav-icons i:hover {
@@ -699,6 +768,7 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .card {
@@ -706,7 +776,7 @@ nav {
   z-index: 1;
   flex: 1;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 24px;
   color: white;
   min-width: 200px;
   position: relative;
@@ -718,11 +788,22 @@ nav {
   animation: cardFloat 6s ease-in-out infinite;
   transform-origin: center bottom;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardEntrance 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    inset 0 0 32px rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 153, 255, 0.2);
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 
+    0 15px 45px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(0, 153, 255, 0.4),
+    inset 0 0 32px rgba(255, 255, 255, 0.2);
 }
 
 .card::after {
@@ -741,14 +822,14 @@ nav {
 }
 
 .card.blue {
-  background: linear-gradient(135deg, #0b3866 0%, #1e88e5 50%, #64b5f6 100%);
+  background: linear-gradient(135deg, #2c5282 0%, #2b6cb0 50%, #3182ce 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   animation: blueCardPulse 3s ease-in-out infinite;
 }
 
 .card.yellow {
-  background: linear-gradient(135deg, #ff6f00 0%, #ffa000 50%, #ffd54f 100%);
+  background: linear-gradient(135deg, #c05621 0%, #d69e2e 50%, #ecc94b 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   animation: yellowCardPulse 3s ease-in-out infinite;
@@ -791,7 +872,7 @@ nav {
   margin-top: auto;
   height: 8px;
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  border-radius: 12px;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -893,6 +974,7 @@ nav {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
 }
 
 .statistics-card::before {
@@ -928,6 +1010,7 @@ nav {
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .stats-text:hover {
@@ -1244,7 +1327,6 @@ hr {
   );
   background-size: 200% 100%;
   border-radius: inherit;
-  transform-origin: left;
   animation: progressLoad 2s ease-out forwards, gradientMove 3s linear infinite;
   box-shadow: 0 0 15px rgba(0, 153, 255, 0.5);
 }
@@ -1284,8 +1366,10 @@ hr {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 0 20px rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 /* Add to your cards or elements that you want to float */
@@ -1305,105 +1389,637 @@ hr {
   }
 }
 
-/* Add base entrance animation classes */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Stagger the animations based on data-index */
-@for $i from 1 through 20 {
-  [data-index="#{$i}"] {
-    animation-delay: #{$i * 0.1}s;
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Apply to specific elements with custom delays */
-.nav-container {
-  animation-delay: 0.1s;
-}
-
-.machine-stats-card {
-  animation-delay: 0.2s;
-}
-
-.innovation-card {
-  animation-delay: 0.3s;
-}
-
-.info-cards .card:nth-child(1) {
-  animation-delay: 0.4s;
-}
-
-.info-cards .card:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.statistics-card {
-  animation-delay: 0.6s;
-}
-
-/* Remove any existing entrance animations that might conflict */
-.dashboard-container {
-  animation: none;
-}
-
+/* Enhanced 3D Card Effect */
 .card {
-  animation: none;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Update the info cards animation */
-.info-cards .card {
+.card:hover {
+  transform: translateY(-10px) rotateX(10deg) rotateY(10deg);
+  box-shadow: 
+    20px 20px 60px rgba(0, 0, 0, 0.5),
+    1px 1px 0px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Neon Glow Effect */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, #00fffc, #fc00ff, #00ff00);
+  filter: blur(15px);
   opacity: 0;
-  transform: translateY(30px);
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
+  border-radius: inherit;
 }
 
-.info-cards .card.blue.fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.4s;
+.card:hover::after {
+  opacity: 0.15;
 }
 
-.info-cards .card.yellow.fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.5s;
+/* Liquid Button Effect */
+.action-buttons button {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-/* Remove or comment out any conflicting card animations */
-/* .card {
-  animation: cardEntrance 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
-} */
-
-/* Make sure the blueCardPulse and yellowCardPulse animations start after the entrance animation */
-.card.blue {
-  animation: blueCardPulse 3s ease-in-out infinite;
-  animation-delay: 1.2s; /* Start after entrance animation */
+.action-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.card.yellow {
-  animation: yellowCardPulse 3s ease-in-out infinite;
-  animation-delay: 1.3s; /* Start after entrance animation */
+.action-buttons button:hover::before {
+  transform: translate(-50%, -50%) scale(2);
 }
 
-/* Update the fadeUp keyframes if needed */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+/* Animated Border */
+.innovation-card {
+  position: relative;
+  background: rgba(17, 17, 17, 0.8);
+}
+
+.innovation-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, #00ff87, #60efff, #0061ff, #00ff87);
+  background-size: 400% 100%;
+  animation: borderGlow 8s linear infinite;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+/* Interactive Progress Bar */
+.progress-bar {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.progress-bar:hover {
+  transform: scaleY(1.5);
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  animation: progressShine 2s infinite linear;
+}
+
+@keyframes progressShine {
+  100% { transform: translateX(100%); }
+}
+
+/* Floating Elements Animation */
+.stats-text {
+  animation: floatStats 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes floatStats {
+  0%, 100% {
+    transform: translateY(0) rotateX(0);
   }
-  to {
+  50% {
+    transform: translateY(-10px) rotateX(5deg);
+  }
+}
+
+/* Enhanced Glass Effect */
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    inset 0 0 32px rgba(255, 255, 255, 0.1);
+}
+
+/* Particle Background */
+.dashboard-container::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 0%, transparent 8%),
+    radial-gradient(circle at 90% 30%, rgba(255,255,255,0.05) 0%, transparent 8%),
+    radial-gradient(circle at 30% 70%, rgba(255,255,255,0.05) 0%, transparent 8%),
+    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.05) 0%, transparent 8%);
+  background-size: 100px 100px;
+  animation: particleMove 20s linear infinite;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+@keyframes particleMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* Hover Scale Effect */
+.nav-icons i {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-icons i:hover {
+  transform: scale(1.3) rotate(15deg);
+  color: #00ff87;
+  text-shadow: 0 0 15px rgba(0, 255, 135, 0.5);
+}
+
+/* Enhanced Loading Animation */
+@keyframes progressLoad {
+  0% {
+    transform: scaleX(0);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    transform: scaleX(var(--progress));
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Magnetic Button Effect */
+.action-buttons button:hover {
+  transform: scale(1.1);
+  letter-spacing: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 153, 255, 0.5),
+    inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced typography styles */
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, #FFFFFF, #E6F3FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  color: #B3D9FF;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Card background enhancement */
+.card {
+  background: linear-gradient(
+    145deg,
+    rgba(0, 31, 63, 0.8),
+    rgba(0, 47, 95, 0.9)
+  );
+  border: 1px solid rgba(179, 217, 255, 0.1);
+}
+
+/* Stats text enhancement */
+.stats-text {
+  color: #FFFFFF;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stats-text h3 {
+  background: linear-gradient(45deg, #FFFFFF, #99CCFF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced button text */
+.action-buttons button {
+  color: #FFFFFF;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Progress bar colors */
+.progress-bar {
+  background: rgba(230, 243, 255, 0.1);
+}
+
+.progress-bar::after {
+  background: linear-gradient(
+    90deg,
+    #00BFFF,
+    #1A8CFF,
+    #0073E6
+  );
+}
+
+/* Enhanced nav text */
+.nav-container p {
+  background: linear-gradient(45deg, #FFFFFF, #B3D9FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* Card text enhancement */
+.card p {
+  color: #CCE6FF;
+  font-weight: 500;
+}
+
+/* Description text */
+.description {
+  color: #99CCFF;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Enhanced innovation card */
+.innovation-card {
+  background: linear-gradient(
+    165deg,
+    rgba(0, 26, 53, 0.95),
+    rgba(0, 40, 80, 0.98)
+  );
+}
+
+.innovation-card h1 {
+  background: linear-gradient(45deg, #FFFFFF, #80BFFF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Statistics card enhancement */
+.statistics-card {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 31, 63, 0.9),
+    rgba(0, 47, 95, 0.95)
+  );
+}
+
+/* Enhanced hover states */
+.card:hover p {
+  color: #FFFFFF;
+  transition: color 0.3s ease;
+}
+
+.action-buttons button:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Add subtle text animations */
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.stats-text h3, .nav-container p {
+  background-size: 200% auto;
+  animation: textShine 4s linear infinite;
+}
+
+/* 3D Depth Layers */
+.depth-layer {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.depth-layer-1 {
+  transform: translateZ(-100px);
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.depth-layer-2 {
+  transform: translateZ(-50px);
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.03) 2px,
+    transparent 4px
+  );
+}
+
+/* Enhanced 3D Card Interactions */
+.card {
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover {
+  transform: translateZ(50px) rotateX(10deg) rotateY(10deg);
+  box-shadow: 
+    20px 20px 60px rgba(0, 0, 0, 0.5),
+    -20px -20px 60px rgba(255, 255, 255, 0.05),
+    inset 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+/* Floating Elements with Parallax */
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateZ(20px) translateY(0px);
+  }
+  50% {
+    transform: translateZ(50px) translateY(-20px);
+  }
+}
+
+/* 3D Tilt Effect */
+.tilt-element {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.tilt-element:hover {
+  transform: perspective(1000px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+}
+
+/* 3D Button Press Effect */
+.action-buttons button {
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.action-buttons button:active {
+  transform: translateZ(-10px) scale(0.95);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 3D Flip Card Effect */
+.flip-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* 3D Navigation Menu */
+.nav-container {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.nav-item {
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav-item:hover {
+  transform: translateZ(30px) scale(1.1);
+}
+
+/* 3D Progress Bar Animation */
+.progress-bar {
+  transform-style: preserve-3d;
+}
+
+.progress-bar::after {
+  transform: translateZ(5px);
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 123, 255, 0.8);
+  }
+}
+
+/* 3D Particle System */
+.particle-system {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.particle-3d {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.8), transparent);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: particle3d 8s infinite linear;
+}
+
+@keyframes particle3d {
+  0% {
+    transform: translateZ(0) translateX(-100vw);
+    opacity: 0;
+  }
+  50% {
     opacity: 1;
-    transform: translateY(0);
+  }
+  100% {
+    transform: translateZ(500px) translateX(100vw);
+    opacity: 0;
+  }
+}
+
+/* 3D Text Effects */
+.text-3d {
+  transform-style: preserve-3d;
+  text-shadow: 
+    0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+}
+
+/* 3D Hover Glow Effect */
+.glow-3d {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.glow-3d::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle at var(--x) var(--y), 
+    rgba(255,255,255,0.2), 
+    transparent 40%);
+  transform: translateZ(-1px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-3d:hover::before {
+  opacity: 1;
+}
+
+/* 3D Card Stack Effect */
+.card-stack {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.card-stack::before,
+.card-stack::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border-radius: inherit;
+  transform: translateZ(-10px);
+  filter: brightness(0.8);
+  z-index: -1;
+}
+
+.card-stack::after {
+  transform: translateZ(-20px);
+  filter: brightness(0.6);
+}
+
+/* Interactive 3D Background */
+.interactive-bg {
+  position: fixed;
+  inset: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.interactive-bg::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    rgba(255,255,255,0.1),
+    transparent 40%
+  );
+  transform: translateZ(-100px);
+  pointer-events: none;
+}
+
+@keyframes textGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Enhanced progress bars */
+.innovation-card .progress-bar {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: visible;
+}
+
+.innovation-card .progress-bar::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 135, 0.5),
+    rgba(0, 97, 255, 0.5)
+  );
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.innovation-card .progress-bar:hover::before {
+  opacity: 1;
+}
+
+.innovation-card .progress-bar::after {
+  background: linear-gradient(
+    90deg,
+    #00ff87,
+    #0061ff
+  );
+  box-shadow: 
+    0 0 20px rgba(0, 255, 135, 0.5),
+    0 0 40px rgba(0, 97, 255, 0.3);
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0%, 100% {
+    filter: brightness(1) blur(0px);
+  }
+  50% {
+    filter: brightness(1.2) blur(2px);
   }
 }
